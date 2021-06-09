@@ -5,6 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import {image} from './data.js'
 import { Link } from 'react-router-dom';
+import {animated,config, useSpring } from 'react-spring';
 export const Navbar=()=>{
     const [click,setClick]=useState(false)
     const [category,setCategory]=useState(false)
@@ -18,12 +19,23 @@ export const Navbar=()=>{
     const handleAdvice=()=>{
       setAdvice(pre=>!pre)
     }
+
+    const [flip, set] = useState(false)
+    const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    reset: true,
+    reverse: flip,
+    delay: 200,
+    config: config.molasses,
+    onRest: () => set(!flip),
+  })
     return(
         <>
         <Container>
           
           <Wrapper1>
-            <Img
+            <animated.img style={{width:"100px",...props}}
                 src="https://adn-static1.nykaa.com/media/wysiwyg/HeaderIcons/NykaaLogoSvg.svg" alt="blank"/>
                 <p onClick={handleCategory} className="brand">CATEGORIES</p>
                 <p onClick={handleBrand} className="brand">BRANDS</p>
