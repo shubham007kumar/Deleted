@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
-import { Container, Hidden, Img, Input, SubContainer,Wrapper1,Wrapper2 } from './Style.js'
+import { Container, Hidden, Input, SubContainer,Wrapper1,Wrapper2 } from './Style.js'
 import { FaSearch } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import {image} from './data.js'
 import { Link } from 'react-router-dom';
 import {animated,config, useSpring } from 'react-spring';
+import { useSelector } from 'react-redux';
+import { auth } from '../../Firebase.js';
+import styled from 'styled-components';
+
 export const Navbar=()=>{
     const [click,setClick]=useState(false)
     const [category,setCategory]=useState(false)
     const [advice,setAdvice]=useState(false)
+    const Login=useSelector((state)=>state.Login.Login)
+    const [user,setUser]=useState()
     const handleBrand=()=>{
         setClick(pre=>!pre)
     }
@@ -30,6 +36,13 @@ export const Navbar=()=>{
     config: config.molasses,
     onRest: () => set(!flip),
   })
+
+  if(Login)
+  {
+     auth.onAuthStateChanged(user => {
+      setUser(user.email.slice(0,6))
+    })
+  }
     return(
         <>
         <Container>
@@ -50,7 +63,7 @@ export const Navbar=()=>{
           </Wrapper1> 
 
            <Wrapper2>
-                <p><span className="userLogo"><BiUser/></span>Account</p>
+            <Link to='/Signup' className="accoutLink"><p><span className="userLogo"><BiUser/></span>{Login ? user:'Account'}</p></Link> 
                 <span className="cartLogo"><FiShoppingCart/></span>
            </Wrapper2>
         
@@ -70,7 +83,7 @@ export const Navbar=()=>{
             </div >
            <div className="imgDiv">
            {
-        image.map((item)=>(<img src={item} alt="blank"/>))
+        image.map((item,index)=>(<img src={item} alt="blank" key={index}/>))
             }
            </div>
           </div>
