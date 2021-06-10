@@ -9,9 +9,8 @@ export const register=(payload)=> (dispatch)=>{
        dispatch(registerSuccess(res))
      })
      .catch((err)=>{
-       dispatch(registerFailure(err))
+       dispatch(registerFailure(err.message))
      })
-    console.log(auth.onAuthStateChanged())
 }
 
 export const registerRequest=(payload)=>{

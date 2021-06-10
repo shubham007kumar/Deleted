@@ -4,6 +4,7 @@ const init={
   Login:false,
   isLoading:false,
   isErrow:false,
+  Loginmessage:''
 }
 
 export const Loginreducer=(state=init,{type,payload})=>{
@@ -30,6 +31,7 @@ export const Loginreducer=(state=init,{type,payload})=>{
      ...state,
      isErrow:true,
      isLoading:false,
+     Loginmessage:payload
     }
   }
    default:

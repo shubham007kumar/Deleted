@@ -9,7 +9,7 @@ export const login=(payload)=> async (dispatch)=>{
       dispatch(loginSuccess(res))
     })
     .catch((err)=>{
-      dispatch(loginFailure(err))
+      dispatch(loginFailure(err.message))
     }) 
 }
 

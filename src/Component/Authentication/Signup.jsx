@@ -14,6 +14,7 @@ export const Signup=()=>{
      const {email,password,config}=query
      const dispatch=useDispatch()
      const Signup=useSelector((state)=>state.Signup.Signup)
+     const message=useSelector((state)=>state.Signup.Signmessage)
      const handleSubmit=(e)=>{
        e.preventDefault()
        if (password !== config) {
@@ -25,13 +26,14 @@ export const Signup=()=>{
      const handleChange=(e)=>{
         const {name,value}=e.target
         const update={...query,[name]:value}
-        setQuery(update)
-
+        setQuery(update)    
      }
+     
     return(
         <>
    { Signup ? <Redirect to='/login' />  :   <div className={styles.container}>
             <h1 className={styles.H1}>Sign Up</h1>
+            <p className={styles.error}>{message}</p>
             <hr className={styles.hori}/>
             <form onSubmit={handleSubmit}>
                     <label className={styles.label}>Email <input type="email"

@@ -12,6 +12,7 @@ export const Login=()=>{
     const [query,setQuery]=useState(init)
     const dispatch=useDispatch()
     const Login=useSelector((state)=>state.Login.Login)
+    const message=useSelector((state)=>state.Login.Loginmessage)
      const {email,password}=query
 
      const handleSubmit=(e)=>{
@@ -29,6 +30,7 @@ export const Login=()=>{
         <>
   {Login ? <Redirect to='/' /> :   <div className={styles.container}>
             <h1 className={styles.H1}>Login in</h1>
+            <p className={styles.error}>{message}</p>
             <hr className={styles.hori}/>
             <form onSubmit={handleSubmit}>
                     <label className={styles.label}>Email <input type="email"

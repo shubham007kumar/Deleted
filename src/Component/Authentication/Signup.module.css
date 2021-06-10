@@ -44,3 +44,9 @@ input[type=password]:focus,input[type=email]:focus {
     border-radius: 10px;
     background: #2196f3;
   }
+
+  .error{
+    font-size: 14px;
+    font-weight: 500;
+    color:red
+  }
