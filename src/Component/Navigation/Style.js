@@ -32,6 +32,10 @@ align-items: center;
 .cartLogo{
     font-size:22px;
 }
+.accoutLink{
+    text-decoration: none;
+    text-transform: uppercase;
+}
 `
 
 export const Img=styled.img`

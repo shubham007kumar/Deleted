@@ -10,7 +10,7 @@ export const Content=()=>{
         <p className={styles.para1}>IN THE SPOTLIGHT</p>
         <div className={styles.imageContainer}>
             {
-                data.map((item)=>(<img src={item} alt="blank" />))
+                data.map((item,index)=>(<img src={item} alt="blank" key={index}/>))
             }
         </div>
         <img className={styles.image3} src="https://images-static.nykaa.com/uploads/7d95c269-d35b-4764-9933-2c4bc4d79a2b.jpg?tr=w-1200,pr-true" alt="blank"/>
@@ -19,21 +19,21 @@ export const Content=()=>{
         <p className={styles.para2}>SPECIAL SELECTION FOR YOU</p>
         <div className={styles.specialContainer}>
       {
-            data1.map((item)=>(<img src={item} alt="blank" />))
+            data1.map((item,index)=>(<img src={item} alt="blank" key={index}/>))
       }
         </div>
 
         <p className={styles.para2}>STORE IN FOCUS</p>
         <div className={styles.specialContainer}>
       {
-            data2.map((item)=>(<img src={item} alt="blank" />))
+            data2.map((item,index)=>(<img src={item} alt="blank" key={index}/>))
       }
         </div>
 
         <p className={styles.para2}>CATEGORY IN FOCUS</p>
         <div className={styles.specialContainer}>
       {
-            data3.map((item)=>(<img src={item} alt="blank" />))
+            data3.map((item,index)=>(<img src={item} alt="blank" key={index}/>))
       }
         </div>
         <p className={styles.para2}>FEATURED BRANDS</p>
