@@ -4,6 +4,7 @@ const init={
   Signup:false,
   isLoading:false,
   isErrow:false,
+  Signmessage:''
 }
 
 export const Signupreducer=(state=init,{type,payload})=>{
@@ -30,6 +31,7 @@ export const Signupreducer=(state=init,{type,payload})=>{
      ...state,
      isErrow:true,
      isLoading:false,
+     Signmessage:payload
     }
   }
    default:
