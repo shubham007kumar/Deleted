@@ -10,12 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { get } from "../../Redux/Product/action.js";
 import styles from './Brand.module.css'
 import styled from 'styled-components'
-import {Navbar} from '../Navigation/Navbar'
 import {Slide} from '../ImageSlider/Slide'
 import { VscLoading } from "react-icons/vsc";
 import { BiRupee } from "react-icons/bi";
 import { FaStar,FaStarHalfAlt} from "react-icons/fa";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai"
+import { useState } from "react";
+import { Pagination } from "../Pagination/Pagination.jsx";
+import {Footer} from '../Footer/Footer'
 
 const Div=styled.div`
 background-color:#eceff1;
@@ -36,13 +38,20 @@ export const Brand = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
+  const [page,setPage]=useState(1)
+  const limit=5
+  const lastindex=page*limit
+  const firstindex=lastindex-limit
+  const currentproduct=product.slice(firstindex,lastindex)
+  const handleChange=(page)=>{
+    setPage(page)
+  }
   useEffect(() => {
     dispatch(get());
-  }, [dispatch]);
-  console.log(product);
+  }, [dispatch,page]);
+ 
   return (
     <Div>
-        <Navbar/>
         <Slide/>
         <p className={styles.downslide}>All Product</p>
       <div className={styles.maincontainer}>
@@ -103,7 +112,7 @@ export const Brand = () => {
         <div className={styles.productcontainer}>
             <div className={styles.subcontainer}>
             {
-        isLoading ? <div className={styles.loading}><VscLoading/></div> :   product.map((item)=>{
+        isLoading ? <div className={styles.loading}><VscLoading/></div> :   currentproduct.map((item)=>{
                     return(
                         <div key={item.id} className={styles.container}>
                             <img className={styles.imagecontainer} src={item.Image} alt="blank"/>
@@ -121,6 +130,8 @@ export const Brand = () => {
         </div>
       </div>
       </div>
+      <Pagination product={product} limit={limit} handleChange={handleChange}/>
+      <Footer/>
     </Div>
   );
 };
