@@ -10,7 +10,7 @@ export const data1 = [
   {
     id:1,
     heading: "Category",
-    details: ["Make up", "Skin"],
+    details: ["BESTSELLER", "NEW","FEATURED"],
   },
   {
     id:2,

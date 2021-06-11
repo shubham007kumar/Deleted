@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { data, data1 } from "./data.js";
 import { useDispatch, useSelector } from "react-redux";
-import { get } from "../../Redux/Product/action.js";
+import { get, getbyCategory } from "../../Redux/Product/action.js";
 import styles from "./Brand.module.css";
 import styled from "styled-components";
 import { Slide } from "../ImageSlider/Slide";
@@ -34,12 +34,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Brand = () => {
+  const [query,setQuery]=useState('')
   const classes = useStyles();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
   const [page, setPage] = useState(1);
-  const limit = 5;
+  const limit = 6;
+
+
   const lastindex = page * limit;
   const firstindex = lastindex - limit;
   const currentproduct = product.slice(firstindex, lastindex);
@@ -48,13 +51,17 @@ export const Brand = () => {
     setPage(page);
   };
 
-  useEffect(() => {
-    dispatch(get());
-  }, [dispatch, page]);
-
   const handleClick = (e) => {
-    console.log(e.target.value);
+    const value=e.target.value
+    setQuery(value)
+    dispatch(getbyCategory(query))
   };
+  
+  useEffect(() => {
+    dispatch(get()); 
+  }, [dispatch, page,query]);
+
+  
 
   return (
     <Div>
@@ -116,7 +123,7 @@ export const Brand = () => {
                         {details.map((item,index) => {
                           return (
                             <div key={index}>
-                              <input type="checkbox" value={item} />
+                              <input type="checkbox" value={item} name="detail" onClick={handleClick} />
                               {item}
                             </div>
                           );
@@ -144,6 +151,7 @@ export const Brand = () => {
                       src={item.Image}
                       alt="blank"
                     />
+                    <p className={styles.category}>{item.category}</p>
                     <p className={styles.namecontainer}>{item.ProduceName}</p>
                     <p className={styles.pricecontainer}>
                       MRP: <BiRupee />
