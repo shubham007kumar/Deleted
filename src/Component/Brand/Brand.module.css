@@ -58,3 +58,9 @@
   font-weight: 900;
   background-color: #fc2779;
 }
+.category{
+  color: #37474f;
+  position: relative;
+   top : -300px;
+   left: 10px;
+}
