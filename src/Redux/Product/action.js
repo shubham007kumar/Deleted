@@ -3,7 +3,7 @@ import { FAILURE_REQUEST, GET_REQUEST, SUCCESS_REQUEST } from "./actionTypes"
 
 export const get = (payload) => (dispatch) => {
     dispatch(getRequest())
- axios('https://mymock-server-shubham00.herokuapp.com/Product_detail')
+ axios(`https://mymock-server-shubham00.herokuapp.com/Product_detail`)
  .then((res)=>{
      dispatch(successRequest(res.data))
  })
