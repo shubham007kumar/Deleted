@@ -21,13 +21,20 @@ This is the project we started as a Three memeber team  during [Constructor week
 * React Router
 * React Spring
 * React icons
+* React Thunk
+* Material Ui
+* React Spring
+* Firebase
+* Axios
+* Redux
+* React-redux
 
 ## File Structure
 
 Within the download you'll find the following directories and files:
 
 ```
-Indiegogo
+Nykaa
 |
 │   README.md 
 │
@@ -35,20 +42,21 @@ Indiegogo
 │   │   Content
 │   │   Footer
 |   |   ImageSlider
-│   │   Navigation ...
-│   
-|   
-|                
-|    
+│   │   Navigation
+│   |   Authentication
+|   |   Brand            
+|   |   Pagination ...
+|
+|
 └───Redux
-│  
-│  
-|   
+│   |  Login
+│   |  Signup
+|   |  Product
 │   
 │ 
 └───Routes
-│   
-│   
+│   |  Privateroute
+│   |  Route
 |    
 └───Utils 
 │  
@@ -62,13 +70,16 @@ Indiegogo
 
 
 
-![Screenshot (217)](https://user-images.githubusercontent.com/34106521/121345687-caa88b80-c942-11eb-89c8-5cfa7e152b82.png)
+![Screenshot (222)](https://user-images.githubusercontent.com/34106521/121716321-81e90200-cafd-11eb-8e96-e6585da1b053.png)
 
+![Screenshot (225)](https://user-images.githubusercontent.com/34106521/121716363-8f05f100-cafd-11eb-9927-e1c00c0def80.png)
 
+![Screenshot (223)](https://user-images.githubusercontent.com/34106521/121716337-86adb600-cafd-11eb-91e5-820bf66c454b.png)
+![Screenshot (224)](https://user-images.githubusercontent.com/34106521/121716341-88777980-cafd-11eb-8628-1f637e9f57ce.png)
 
-![Screenshot (218)](https://user-images.githubusercontent.com/34106521/121345770-e57b0000-c942-11eb-8a88-b29994c6ee8a.png)
-
-
+![Screenshot (226)](https://user-images.githubusercontent.com/34106521/121716387-975e2c00-cafd-11eb-8119-519b94fc160e.png)
+![Screenshot (227)](https://user-images.githubusercontent.com/34106521/121716398-9a591c80-cafd-11eb-85b1-b3badd05d497.png)
+![Screenshot (228)](https://user-images.githubusercontent.com/34106521/121716408-9cbb7680-cafd-11eb-9097-1ba5f24b5889.png)
 
 
 ## Contributors
