@@ -1,65 +1,64 @@
-.image{
-    margin:10px 170px;
-    border-radius: 10px;
+.image {
+  margin: 10px 170px;
+  border-radius: 10px;
 }
-.image:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.image2{
-    margin:7px 170px;
-    border-radius: 10px;
-}
-.image2:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.para1{
-    text-align: center;
-    font-size: 25px;
-    font-weight: 500;
-}
-.imageContainer{
-    margin: 10px 143px;
-}
-.imageContainer > img{
-    margin: 10px 8px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.image3{
-    margin: 10px 160px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
-}
-.specialContainer{
-    margin: 10px 143px;
-
-}
-.specialContainer> img{
-    margin: 10px 8px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.para2{
-    text-align: center;
-    font-size: 25px;
-    font-weight: 500;
-}
-.dataFour{
-    border-radius: 10px;
-    display: inline-block;
-    margin:10px 5px
+.image:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.featureDiv{
-margin-left: 150px;
+.image2 {
+  margin: 7px 170px;
+  border-radius: 10px;
 }
-.dataFour>img{
- border-radius: 10px;
- box-shadow: 0px 5px 15px #fff;
+.image2:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.para1 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+.imageContainer {
+  margin: 10px 143px;
+}
+.imageContainer > img {
+  margin: 10px 8px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.image3 {
+  margin: 10px 160px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.specialContainer {
+  margin: 10px 143px;
+}
+.specialContainer > img {
+  margin: 10px 8px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.para2 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+.dataFour {
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px 5px;
 }
 
-.dataFour>img:hover{
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-   }
+.featureDiv {
+  margin-left: 150px;
+}
+.dataFour > img {
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px #fff;
+}
+
+.dataFour > img:hover {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
