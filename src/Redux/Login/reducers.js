@@ -1,7 +1,8 @@
+import { getData, savedata } from "../../utils/localstorage";
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./actionTypes";
-
+const token=getData('Login')
 const init = {
-  Login: false,
+  Login: token ?true :false,
   isLoading: false,
   isErrow: false,
   Loginmessage: "",
@@ -17,6 +18,7 @@ export const Loginreducer = (state = init, { type, payload }) => {
       };
     }
     case LOGIN_SUCCESS: {
+      savedata('Login',true)
       return {
         ...state,
         Login: true,

@@ -108,19 +108,39 @@ export const Navbar = () => {
           </div>
         </div>
         <div className={category ? "categoryBlock" : "categoryNone"}>
-          <Link to="/makeup" className="link">
+          <Link to="/product" className="link">
             Makeup
           </Link>
-          <Link className="link">Skin</Link>
-          <Link className="link">Hair</Link>
-          <Link className="link">Appliances</Link>
-          <Link className="link">Personal Care</Link>
-          <Link className="link">Nature</Link>
-          <Link className="link">Mom & baby</Link>
-          <Link className="link">Health & Wellness</Link>
-          <Link className="link">Men</Link>
-          <Link className="link">Fragrance</Link>
-          <Link className="link">Luxe</Link>
+          <Link to="/product" className="link">
+            Skin
+          </Link>
+          <Link to="/product" className="link">
+            Hair
+          </Link>
+          <Link to="/product" className="link">
+            Appliances
+          </Link>
+          <Link to="/product" className="link">
+            Personal Care
+          </Link>
+          <Link to="/product" className="link">
+            Nature
+          </Link>
+          <Link to="/product" className="link">
+            Mom & baby
+          </Link>
+          <Link to="/product" className="link">
+            Health & Wellness
+          </Link>
+          <Link to="/product" className="link">
+            Men
+          </Link>
+          <Link to="/product" className="link">
+            Fragrance
+          </Link>
+          <Link to="/product" className="link">
+            Luxe
+          </Link>
         </div>
         <div className={advice ? "adviceBlock" : "adviceNone"}>
           <div className="adviceOne">
