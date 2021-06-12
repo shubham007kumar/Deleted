@@ -13,11 +13,14 @@ import styled from "styled-components";
 import { Slide } from "../ImageSlider/Slide";
 import { VscLoading } from "react-icons/vsc";
 import { BiRupee } from "react-icons/bi";
+import { BsFillHeartFill } from "react-icons/bs";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 import { Pagination } from "../Pagination/Pagination.jsx";
 import { Footer } from "../Footer/Footer";
+import {  useHistory } from "react-router-dom";
+import { sendWishlist } from "../../Redux/Wishlist/action.js";
 
 const Div = styled.div`
   background-color: #eceff1;
@@ -35,10 +38,12 @@ const useStyles = makeStyles((theme) => ({
 
 export const Brand = () => {
   const [query,setQuery]=useState('')
+  const colorRef=React.useRef()
   const classes = useStyles();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
+  const Login=useSelector((state)=>state.Login.Login)
   const [page, setPage] = useState(1);
   const limit = 6;
 
@@ -56,11 +61,21 @@ export const Brand = () => {
     setQuery(value)
     dispatch(getbyCategory(query))
   };
+
+  let history=useHistory()
+  const handleWishlist=(data)=>{
+    if(!Login)
+    {
+      let path='/login'
+      history.push(path)
+    }
+    dispatch(sendWishlist(data))
+}
   
   useEffect(() => {
     dispatch(get()); 
+    
   }, [dispatch, page,query]);
-
   
 
   return (
@@ -119,7 +134,7 @@ export const Brand = () => {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>
+                      <Typography >
                         {details.map((item,index) => {
                           return (
                             <div key={index}>
@@ -143,7 +158,8 @@ export const Brand = () => {
                 <VscLoading />
               </div>
             ) : (
-              currentproduct.map((item) => {
+              currentproduct   &&  currentproduct.map((item) => {
+              
                 return (
                   <div key={item.id} className={styles.container}>
                     <img
@@ -165,7 +181,7 @@ export const Brand = () => {
                       <FaStarHalfAlt /> {item.Rating}
                     </p>
                     <div className={styles.hide}>
-                      <AiOutlineHeart />
+                       <div onClick={()=>handleWishlist(item)}>{item.Wishlist  ? <BsFillHeartFill className={styles.heart} />  : <AiOutlineHeart ref={colorRef}/>}</div>
                       <div className={styles.addcart}>Add to Cart</div>
                     </div>
                   </div>

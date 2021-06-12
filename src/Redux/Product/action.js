@@ -41,3 +41,14 @@ export const getbyCategory = (payload) => (dispatch) => {
       dispatch(failureRequest());
     });
 };
+
+export const getWishlist = (payload) => (dispatch) => {
+  dispatch(getRequest());
+  axios(`https://mymock-server-shubham00.herokuapp.com/Product_detail?category=${payload}`)
+    .then((res) => {
+      dispatch(successRequest(res.data));
+    })
+    .catch((err) => {
+      dispatch(failureRequest());
+    });
+};
