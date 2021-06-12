@@ -1,5 +1,5 @@
 .image {
-  margin: 10px 170px;
+  margin:2% 11%;
   border-radius: 10px;
 }
 .image:hover {
@@ -7,7 +7,7 @@
 }
 
 .image2 {
-  margin: 7px 170px;
+  margin:0.1% 11%;
   border-radius: 10px;
 }
 .image2:hover {
@@ -19,7 +19,7 @@
   font-weight: 500;
 }
 .imageContainer {
-  margin: 10px 143px;
+  margin:0.1% 9.3%;
 }
 .imageContainer > img {
   margin: 10px 8px;
@@ -27,12 +27,12 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .image3 {
-  margin: 10px 160px;
+  margin:0.9% 10%;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .specialContainer {
-  margin: 10px 143px;
+  margin:0.1% 9.3%;
 }
 .specialContainer > img {
   margin: 10px 8px;
@@ -51,7 +51,7 @@
 }
 
 .featureDiv {
-  margin-left: 150px;
+  margin-left: 10%;
 }
 .dataFour > img {
   border-radius: 10px;
