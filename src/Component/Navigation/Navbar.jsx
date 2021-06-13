@@ -7,25 +7,28 @@ import {
   Wrapper1,
   Wrapper2
 } from "./Style.js";
-import { FaSearch,FaArrowLeft } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
-import { BiUser } from "react-icons/bi";
+import { BiUser,BiRupee } from "react-icons/bi";
 import { image } from "./data.js";
 import { Link } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
 import { useSelector } from "react-redux";
 import { auth } from "../../Firebase.js";
-import styles from './Navbar.module.css'
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { getcartdata } from "../../Redux/Cart/action.js";
+import styles from './Navbar.module.css'
 export const Navbar = () => {
   const [click, setClick] = useState(false);
   const [category, setCategory] = useState(false);
   const [advice, setAdvice] = useState(false);
-  const [cart,setCart]=useState(false)
-  const [count,setCount]=useState(0)
   const Login = useSelector((state) => state.Login.Login);
-  const data=useSelector((state)=>state.Cart.dataList)
+  const dataList=useSelector((state)=>state.Cart.dataList);
+  const dispatch=useDispatch()
+  const [cart,setCart]=useState(false)
   const [user, setUser] = useState();
+  const [count,setCount]=useState(1)
   const handleBrand = () => {
     setClick((pre) => !pre);
   };
@@ -52,10 +55,18 @@ export const Navbar = () => {
       setUser(user.email.slice(0, 6));
     });
   }
+const handlecart=()=>{
+setCart(pre => !pre)
+}
 
-  const handlecart=()=>{
-    setCart(pre =>!pre)
-  }
+let sum=0;
+for(var i=0;i<dataList.length;i++)
+{
+  sum=sum+dataList[i].Price
+}
+useEffect(()=>{
+  dispatch(getcartdata())
+},[dispatch])
   return (
     <>
       <Container>
@@ -92,7 +103,10 @@ export const Navbar = () => {
             </p>
           </Link>
           <span className="cartLogo">
-        <Link to='/cart'> <FiShoppingCart onClick={handlecart}/> </Link> 
+      <FiShoppingCart onClick={handlecart}/>
+      <div className={styles.cartcount}>
+        <span className={styles.count}>{dataList.length}</span>
+      </div>
           </span>
         </Wrapper2>
       </Container>
@@ -185,14 +199,39 @@ export const Navbar = () => {
           </div>
         </div>
       </Hidden>
-      {/* <div className={cart ? styles.cartblock : styles.cartnone}>
-          <div className={styles.arrowicon}>
-          <FaArrowLeft className={styles.arrow}/>
-          <p>Shopping Bag({count})</p>
-          </div>
-          <div className={styles.content}>
-          </div>
-      </div> */}
+      <div className={cart ? styles.notcontainer : styles.container }>
+      <h3 className={styles.shop}>Shopping Cart({dataList.length})</h3>
+           {
+               dataList.map((item)=>{
+                   return(
+                       <div key={item.id} className={styles.Threediv}>
+                         <div className={styles.Onediv}>
+                           <img src={item.Image}  alt="blank" className={styles.img} />
+                           <p className={styles.product}>{item.ProduceName}</p>
+                         </div>
+                         <hr className={styles.hori}></hr>
+                         <div className={styles.Twodiv}>
+                            <div className={styles.btncontainer}>
+                                <button className={styles.btn} onClick={()=>setCount(pre=> pre-1)}>-</button>
+                                <span className={styles.spa}>{count}</span>
+                                <button className={styles.btn1} onClick={()=>setCount(pre=> pre+1)}>+</button>
+                            </div>
+                            <p className={styles.price}><BiRupee/>{item.Price}</p>
+                         </div>
+                       </div>
+                   )
+               })
+           }
+           <div className={styles.Fourdiv}>
+             <div className={styles.Fivediv}>
+               <p>Total</p>
+               <span className={styles.ruppe}><BiRupee/>{sum}</span>
+             </div>
+             <div className={styles.Sixdiv}>
+               <p>PROCEED</p>
+             </div>
+           </div>
+        </div>
     </> 
   );
 };
