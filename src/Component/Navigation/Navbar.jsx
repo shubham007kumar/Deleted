@@ -5,9 +5,9 @@ import {
   Input,
   SubContainer,
   Wrapper1,
-  Wrapper2,
+  Wrapper2
 } from "./Style.js";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch,FaArrowLeft } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import { image } from "./data.js";
@@ -15,12 +15,16 @@ import { Link } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
 import { useSelector } from "react-redux";
 import { auth } from "../../Firebase.js";
-
+import styles from './Navbar.module.css'
+import { useEffect } from "react";
 export const Navbar = () => {
   const [click, setClick] = useState(false);
   const [category, setCategory] = useState(false);
   const [advice, setAdvice] = useState(false);
+  const [cart,setCart]=useState(false)
+  const [count,setCount]=useState(0)
   const Login = useSelector((state) => state.Login.Login);
+  const data=useSelector((state)=>state.Cart.dataList)
   const [user, setUser] = useState();
   const handleBrand = () => {
     setClick((pre) => !pre);
@@ -47,6 +51,10 @@ export const Navbar = () => {
     auth.onAuthStateChanged((user) => {
       setUser(user.email.slice(0, 6));
     });
+  }
+
+  const handlecart=()=>{
+    setCart(pre =>!pre)
   }
   return (
     <>
@@ -84,7 +92,7 @@ export const Navbar = () => {
             </p>
           </Link>
           <span className="cartLogo">
-            <FiShoppingCart />
+        <Link to='/cart'> <FiShoppingCart onClick={handlecart}/> </Link> 
           </span>
         </Wrapper2>
       </Container>
@@ -177,6 +185,14 @@ export const Navbar = () => {
           </div>
         </div>
       </Hidden>
-    </>
+      {/* <div className={cart ? styles.cartblock : styles.cartnone}>
+          <div className={styles.arrowicon}>
+          <FaArrowLeft className={styles.arrow}/>
+          <p>Shopping Bag({count})</p>
+          </div>
+          <div className={styles.content}>
+          </div>
+      </div> */}
+    </> 
   );
 };

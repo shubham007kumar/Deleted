@@ -16,12 +16,14 @@ export const Productreducer = (state = init, { type, payload }) => {
     }
     case SUCCESS_REQUEST: {
       return {
+        ...state,
         isLoading: false,
         productList: payload,
       };
     }
     case FAILURE_REQUEST: {
       return {
+        ...state,
         isError: true,
         isLoading: false,
       };

@@ -29,6 +29,7 @@ export const Wrapper2 = styled.div`
     margin-right: 5px;
     padding-top: 10px;
   }
+
   .cartLogo {
     font-size: 22px;
   }
