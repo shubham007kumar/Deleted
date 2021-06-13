@@ -19,8 +19,9 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 import { Pagination } from "../Pagination/Pagination.jsx";
 import { Footer } from "../Footer/Footer";
-import {  useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { sendWishlist } from "../../Redux/Wishlist/action.js";
+import { cart } from "../../Redux/Cart/action.js";
 
 const Div = styled.div`
   background-color: #eceff1;
@@ -37,16 +38,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Brand = () => {
-  const [query,setQuery]=useState('')
-  const colorRef=React.useRef()
+  const [query, setQuery] = useState("");
+  const colorRef = React.useRef();
   const classes = useStyles();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
-  const Login=useSelector((state)=>state.Login.Login)
+  const Login = useSelector((state) => state.Login.Login);
   const [page, setPage] = useState(1);
   const limit = 6;
-
 
   const lastindex = page * limit;
   const firstindex = lastindex - limit;
@@ -57,26 +57,27 @@ export const Brand = () => {
   };
 
   const handleClick = (e) => {
-    const value=e.target.value
-    setQuery(value)
-    dispatch(getbyCategory(query))
+    const value = e.target.value;
+    setQuery(value);
+    dispatch(getbyCategory(query));
   };
 
-  let history=useHistory()
-  const handleWishlist=(data)=>{
-    if(!Login)
-    {
-      let path='/login'
-      history.push(path)
+  let history = useHistory();
+  const handleWishlist = (data) => {
+    if (!Login) {
+      let path = "/login";
+      history.push(path);
     }
-    dispatch(sendWishlist(data))
-}
-  
+    dispatch(sendWishlist(data));
+  };
+
+  const handleCart=(data)=>{
+    dispatch(cart(data))
+  }
+
   useEffect(() => {
-    dispatch(get()); 
-    
-  }, [dispatch, page,query]);
-  
+    dispatch(get());
+  }, [dispatch, page, query]);
 
   return (
     <Div>
@@ -87,7 +88,7 @@ export const Brand = () => {
           <div className={classes.root}>
             <div>
               {data.map((item) => {
-                const {id, heading, details } = item;
+                const { id, heading, details } = item;
                 return (
                   <Accordion key={id}>
                     <AccordionSummary
@@ -101,7 +102,7 @@ export const Brand = () => {
                     </AccordionSummary>
                     <AccordionDetails>
                       <Typography>
-                        {details.map((item,index) => {
+                        {details.map((item, index) => {
                           return (
                             <div key={index}>
                               <input
@@ -121,7 +122,7 @@ export const Brand = () => {
             </div>
             <div>
               {data1.map((item) => {
-                const { id,heading, details } = item;
+                const { id, heading, details } = item;
                 return (
                   <Accordion key={id}>
                     <AccordionSummary
@@ -134,11 +135,16 @@ export const Brand = () => {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography >
-                        {details.map((item,index) => {
+                      <Typography>
+                        {details.map((item, index) => {
                           return (
                             <div key={index}>
-                              <input type="checkbox" value={item} name="detail" onClick={handleClick} />
+                              <input
+                                type="checkbox"
+                                value={item}
+                                name="detail"
+                                onClick={handleClick}
+                              />
                               {item}
                             </div>
                           );
@@ -158,8 +164,8 @@ export const Brand = () => {
                 <VscLoading />
               </div>
             ) : (
-              currentproduct   &&  currentproduct.map((item) => {
-              
+              currentproduct &&
+              currentproduct.map((item) => {
                 return (
                   <div key={item.id} className={styles.container}>
                     <img
@@ -181,8 +187,14 @@ export const Brand = () => {
                       <FaStarHalfAlt /> {item.Rating}
                     </p>
                     <div className={styles.hide}>
-                       <div onClick={()=>handleWishlist(item)}>{item.Wishlist  ? <BsFillHeartFill className={styles.heart} />  : <AiOutlineHeart ref={colorRef}/>}</div>
-                      <div className={styles.addcart}>Add to Cart</div>
+                      <div onClick={() => handleWishlist(item)}>
+                        {item.Wishlist ? (
+                          <BsFillHeartFill className={styles.heart} />
+                        ) : (
+                          <AiOutlineHeart ref={colorRef} />
+                        )}
+                      </div>
+                      <div className={styles.addcart} onClick={()=>handleCart(item)}>Add to Cart</div>
                     </div>
                   </div>
                 );

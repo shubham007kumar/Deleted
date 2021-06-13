@@ -1,9 +1,14 @@
-import { FAILURE_WISHLIST, POST_WISHLIST, SUCCESS_WISHLIST } from "./actionTypes";
+import {
+  FAILURE_WISHLIST,
+  POST_WISHLIST,
+  SUCCESS_WISHLIST,
+} from "./actionTypes";
 
 const init = {
-  data:null,
-  isLoading:false,
-  isError:true,
+  data: null,
+  dataList:[],
+  isLoading: false,
+  isError: true,
 };
 
 export const Wishlistreducer = (state = init, { type, payload }) => {
@@ -16,12 +21,14 @@ export const Wishlistreducer = (state = init, { type, payload }) => {
     }
     case SUCCESS_WISHLIST: {
       return {
+        ...state,
         isLoading: false,
-        data:payload,
+        data: payload,
       };
     }
     case FAILURE_WISHLIST: {
       return {
+        ...state,
         isError: true,
         isLoading: false,
       };
