@@ -46,7 +46,7 @@ export const Navbar = () => {
   const handleSearch=(e)=>{
     if(e.key === 'Enter')
     {
-      history.push('/product')
+      history.push("/product");
       dispatch(getbyCategory(search.toUpperCase()))
     }
   

@@ -49,7 +49,26 @@ export const Brand = () => {
   const productList = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
   const Login = useSelector((state) => state.Login.Login);
+   //sort by discount
+   const [sortbycost,setSorbycost]=useState(null)
+   const sortcondition=(a,b)=>{
+    if(sortbycost === null){
+      return null
+    }
+    if(sortbycost === "Discount")
+    {
+      return b.Discount-a.Discount
+    }
 
+    if(sortbycost === "Price")
+    {
+      return a.Price-b.Price
+    }
+    if(sortbycost === "Rating")
+    {
+           return b.Rating-a.Rating
+    }
+  }
   // for pagination
   const [page, setPage] = useState(1);
   const limit = 6;
@@ -64,8 +83,11 @@ export const Brand = () => {
 
   const handleClick = (e) => {
     const value=e.target.value
-     setQuery(value)
-    dispatch(getbyCategory(query))
+    if(e.target.checked)
+    {
+      setQuery(value)
+      dispatch(getbyCategory(query))
+    }
   };
  
   //function for adding product to whislist
@@ -114,7 +136,7 @@ export const Brand = () => {
                               <input
                                value={item}
                                 type="checkbox"
-                                onClick={handleClick}
+                                onClick={()=>setSorbycost(item)}
                               />
                               {item}
                             </div>
@@ -170,7 +192,7 @@ export const Brand = () => {
               </div>
             ) : (
               currentproduct &&
-              currentproduct.map((item) => {
+              currentproduct.sort(sortcondition).map((item) => {
                 return (
                   <div key={item.id} className={styles.container}>
                     <img

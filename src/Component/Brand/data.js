@@ -2,7 +2,7 @@ export const data = [
   {
     id: 1,
     heading: "Sort by:Popularity",
-    details: ["Discount", "Featured", "Top Rated", "New Arrival", "Price"],
+    details: ["Discount", "Featured", "Rating", "New Arrival", "Price"],
   },
 ];
 
