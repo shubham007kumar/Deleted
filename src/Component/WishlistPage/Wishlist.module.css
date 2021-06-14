@@ -1,60 +1,61 @@
-.onediv{
- display: flex;
- align-items: flex-start;
- column-gap: 20px;
- justify-content: space-evenly;
- padding-top: 5%;
- padding-bottom: 15%;
- padding-left: 10%;
- padding-right: 10%;
+.onediv {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 20px;
+  justify-content: space-evenly;
+  padding-top: 5%;
+  padding-bottom: 15%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
-.twodiv{
-    width: 25%;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
-    border-radius: 10px; 
-    padding-top: 1%;
-    padding-left: 2%;
-    padding-right: 1%;
-    padding-bottom: 2%;
+.twodiv {
+  width: 15%;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 1%;
+  padding-bottom: 2%;
 }
-.threediv{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #fff;
-    column-gap: 10px;
+.threediv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  column-gap: 10px;
 }
-.threediv:hover{
-    color: #fc2779;
+.threediv:hover {
+  color: #fc2779;
 }
-.fourdiv{
-    background-color: #fff;
-    display: flex;  
-    flex-wrap: wrap;
-    border-radius: 10px;
-    padding: 1% 1%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.fourdiv {
+  background-color: #fff;
+  width: 70%;
+  height:auto;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 1% 1%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.img{
-     width: 75%;
+.img {
+  width: 75%;
 }
-.fivediv{
-
-    background-color:#fff;
-    width: 25%;
-    padding-top: 1%;
-    padding-bottom: 7%;
-    border-radius: 10px;
-    padding-left: 0%;
-    padding-right: 2%;
-    margin: 10px 10px;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.fivediv {
+  background-color: #fff;
+  width: 25%;
+  padding-top: 1%;
+  padding-bottom: 7%;
+  border-radius: 10px;
+  padding-left: 0%;
+  padding-right: 2%;
+  margin: 10px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.param{
-    margin-left: 10px;
-    width: 220px;
+.param {
+  margin-left: 10px;
+  width: 220px;
 }

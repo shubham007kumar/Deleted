@@ -23,10 +23,13 @@ import { useHistory } from "react-router-dom";
 import { sendWishlist } from "../../Redux/Wishlist/action.js";
 import { cart } from "../../Redux/Cart/action.js";
 
+
+//styled component
 const Div = styled.div`
   background-color: #eceff1;
 `;
 
+//material-ui
 const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -34,34 +37,38 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     width: "120%",
-  },
+  }
 }));
+
+//function Component 
 
 export const Brand = () => {
   const [query, setQuery] = useState("");
-  const colorRef = React.useRef();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.Product.productList);
+  const productList = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
   const Login = useSelector((state) => state.Login.Login);
+
+  // for pagination
   const [page, setPage] = useState(1);
   const limit = 6;
-
   const lastindex = page * limit;
   const firstindex = lastindex - limit;
-  const currentproduct = product.slice(firstindex, lastindex);
+  const currentproduct = productList.slice(firstindex, lastindex);
 
+  //function for changing page no 
   const handleChange = (page) => {
     setPage(page);
   };
 
   const handleClick = (e) => {
-    const value = e.target.value;
-    setQuery(value);
-    dispatch(getbyCategory(query));
+    const value=e.target.value
+     setQuery(value)
+    dispatch(getbyCategory(query))
   };
-
+ 
+  //function for adding product to whislist
   let history = useHistory();
   const handleWishlist = (data) => {
     if (!Login) {
@@ -71,13 +78,14 @@ export const Brand = () => {
     dispatch(sendWishlist(data));
   };
 
-  const handleCart=(data)=>{
-    dispatch(cart(data))
-  }
+  //function for adding product to cart
+  const handleCart = (data) => {
+    dispatch(cart(data));
+  };
 
   useEffect(() => {
     dispatch(get());
-  }, [dispatch, page, query]);
+  }, [dispatch, page]); 
 
   return (
     <Div>
@@ -106,6 +114,7 @@ export const Brand = () => {
                           return (
                             <div key={index}>
                               <input
+                                name="chec"
                                 type="checkbox"
                                 value={item}
                                 onClick={handleClick}
@@ -191,10 +200,15 @@ export const Brand = () => {
                         {item.Wishlist ? (
                           <BsFillHeartFill className={styles.heart} />
                         ) : (
-                          <AiOutlineHeart ref={colorRef} />
+                          <AiOutlineHeart/>
                         )}
                       </div>
-                      <div className={styles.addcart} onClick={()=>handleCart(item)}>Add to Cart</div>
+                      <div
+                        className={styles.addcart}
+                        onClick={() => handleCart(item)}
+                      >
+                        Add to Cart
+                      </div>
                     </div>
                   </div>
                 );
@@ -203,7 +217,7 @@ export const Brand = () => {
           </div>
         </div>
       </div>
-      <Pagination product={product} limit={limit} handleChange={handleChange} />
+      <Pagination product={productList} limit={limit} handleChange={handleChange} />
       <Footer />
     </Div>
   );
