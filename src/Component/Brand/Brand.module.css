@@ -7,16 +7,17 @@
   width: 90%;
 }
 .subcontainer {
+  
   margin: 0% 4%;
 }
 .container {
+  border: 1px solid #fff;
   width: 30%;
   display: inline-block;
-  border: 1px solid #fff;
   margin: 0.5% 0.9%;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: #fff 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .imagecontainer {
   padding: 0px 1%;
@@ -43,15 +44,16 @@
   text-align: center;
 }
 .hide {
-  display: none;
+  visibility: hidden;
 }
 .container:hover > .hide {
   display: flex;
+  visibility:visible;
   font-size: 20px;
   justify-content: center;
   column-gap: 30%;
   align-items: center;
-  padding: 10px 10px;
+  padding: 5px 10px;
 }
 .container:hover > .hide > .addcart {
   padding: 4% 5%;
