@@ -56,7 +56,7 @@ export const Brand = () => {
   const lastindex = page * limit;
   const firstindex = lastindex - limit;
   const currentproduct = productList.slice(firstindex, lastindex);
-
+  
   //function for changing page no 
   const handleChange = (page) => {
     setPage(page);
@@ -82,11 +82,9 @@ export const Brand = () => {
   const handleCart = (data) => {
     dispatch(cart(data));
   };
-
   useEffect(() => {
     dispatch(get());
-  }, [dispatch, page]); 
-
+  }, [dispatch]); 
   return (
     <Div>
       <Slide />
@@ -114,9 +112,8 @@ export const Brand = () => {
                           return (
                             <div key={index}>
                               <input
-                                name="chec"
+                               value={item}
                                 type="checkbox"
-                                value={item}
                                 onClick={handleClick}
                               />
                               {item}
@@ -151,7 +148,6 @@ export const Brand = () => {
                               <input
                                 type="checkbox"
                                 value={item}
-                                name="detail"
                                 onClick={handleClick}
                               />
                               {item}

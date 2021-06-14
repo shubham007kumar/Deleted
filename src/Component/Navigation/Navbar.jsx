@@ -7,11 +7,18 @@ import {
   Wrapper1,
   Wrapper2,
 } from "./Style.js";
-import { FaSearch,FaShuttleVan,FaStar,FaWallet,FaHeart,FaQuestion } from "react-icons/fa";
+import {
+  FaSearch,
+  FaShuttleVan,
+  FaStar,
+  FaWallet,
+  FaHeart,
+  FaQuestion,
+} from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser, BiRupee } from "react-icons/bi";
 import { image } from "./data.js";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
 import { useSelector } from "react-redux";
 import { auth } from "../../Firebase.js";
@@ -19,6 +26,10 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getcartdata } from "../../Redux/Cart/action.js";
 import styles from "./Navbar.module.css";
+import { getbyCategory } from "../../Redux/Product/action.js";
+const init = {
+  title: "",
+};
 export const Navbar = () => {
   const [click, setClick] = useState(false);
   const [category, setCategory] = useState(false);
@@ -26,9 +37,20 @@ export const Navbar = () => {
   const Login = useSelector((state) => state.Login.Login);
   const dataList = useSelector((state) => state.Cart.dataList);
   const dispatch = useDispatch();
+  const history=useHistory()
   const [cart, setCart] = useState(false);
   const [user, setUser] = useState();
   const [count, setCount] = useState(1);
+  const [search, setSearch] = useState(init);
+  const { title } = search;
+  const handleSearch=(e)=>{
+    if(e.key === 'Enter')
+    {
+      history.push('/product')
+      dispatch(getbyCategory(search.toUpperCase()))
+    }
+  
+  }
   const handleBrand = () => {
     setClick((pre) => !pre);
   };
@@ -88,7 +110,14 @@ export const Navbar = () => {
             <span className="searchLogo">
               <FaSearch />
             </span>
-            <Input type="text" placeholder="Search product, brands" />
+            <Input
+              type="text"
+              name="title"
+              value={title}
+              onKeyDown={(e)=>handleSearch(e)}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search product, brands"
+            />
           </SubContainer>
         </Wrapper1>
 
@@ -247,23 +276,35 @@ export const Navbar = () => {
       </div>
       <div className={styles.sevendiv}>
         <div className={styles.eightdiv}>
-          <span><FaShuttleVan/></span>
+          <span>
+            <FaShuttleVan />
+          </span>
           <p>My Order</p>
         </div>
         <div className={styles.eightdiv}>
-          <span><FaStar/></span>
+          <span>
+            <FaStar />
+          </span>
           <p>My Profile</p>
         </div>
         <div className={styles.eightdiv}>
-          <span><FaWallet/></span>
+          <span>
+            <FaWallet />
+          </span>
           <p>My Wallet</p>
         </div>
-      <Link className={styles.linkp} to='/wishlist'><div className={styles.eightdiv}>
-          <span><FaHeart/></span>
-          <p>My Whislist</p>
-        </div></Link>
+        <Link className={styles.linkp} to="/wishlist">
+          <div className={styles.eightdiv}>
+            <span>
+              <FaHeart />
+            </span>
+            <p>My Whislist</p>
+          </div>
+        </Link>
         <div className={styles.eightdiv}>
-          <span><FaQuestion/></span>
+          <span>
+            <FaQuestion />
+          </span>
           <p>Q & A</p>
         </div>
       </div>

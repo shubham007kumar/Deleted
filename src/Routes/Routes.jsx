@@ -6,7 +6,10 @@ import { Login } from "../Component/Authentication/Login";
 import { Home } from "./Home";
 import { Brand } from "../Component/Brand/Brand";
 import { Wishlistpage } from "../Component/WishlistPage/Wishlistpage";
+import { useLocation } from "react-router-dom";
 export const Routes = () => {
+  const match=useLocation()
+  console.log(match)
   return (
     <>
       <Navbar />
@@ -25,6 +28,9 @@ export const Routes = () => {
         </Route>
         <Route path='/wishlist'>
           <Wishlistpage/>
+        </Route>
+        <Route>
+            <h1 style={{textAlign:"center"}}>Page not Found 404 {match.pathname.slice(1)}</h1>
         </Route>
       </Switch>
     </>
