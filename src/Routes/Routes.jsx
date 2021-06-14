@@ -5,6 +5,7 @@ import { Signup } from "../Component/Authentication/Signup";
 import { Login } from "../Component/Authentication/Login";
 import { Home } from "./Home";
 import { Brand } from "../Component/Brand/Brand";
+import { Wishlistpage } from "../Component/WishlistPage/Wishlistpage";
 export const Routes = () => {
   return (
     <>
@@ -21,6 +22,9 @@ export const Routes = () => {
         </Route>
         <Route path="/product">
           <Brand />
+        </Route>
+        <Route path='/wishlist'>
+          <Wishlistpage/>
         </Route>
       </Switch>
     </>
