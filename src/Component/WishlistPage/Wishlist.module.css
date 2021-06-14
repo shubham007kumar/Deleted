@@ -1,0 +1,8 @@
+.container{
+    background-color:#e2f1f8;
+}
+.onediv{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}

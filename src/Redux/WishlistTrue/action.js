@@ -22,7 +22,7 @@ export const failureTruewish = () => {
 
 export const getTruewishlist = (payload) => (dispatch) => {
   dispatch(getTruewish());
-  axios(
+  axios.get(
       `https://mymock-server-shubham00.herokuapp.com/Product_detail?Wishlist=${true}`)
     .then((res) => {
       dispatch(successTruewish(res.data));

@@ -6,7 +6,6 @@ import {
 
 const init = {
   data: null,
-  dataList:[],
   isLoading: false,
   isError: true,
 };

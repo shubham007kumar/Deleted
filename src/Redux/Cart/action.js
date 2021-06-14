@@ -7,12 +7,12 @@ export const getcart = () => {
   };
 };
 
-export const postcart=(payload)=>{
-  return{
-    type:POST_CART,
-    payload
-  }
-}
+export const postcart = (payload) => {
+  return {
+    type: POST_CART,
+    payload,
+  };
+};
 
 export const successcart = (payload) => {
   return {
@@ -27,30 +27,35 @@ export const failurecart = () => {
   };
 };
 
-export const cart= (payload) => (dispatch) => {
-  const {id,cart}=payload
+export const getcartdata = () => (dispatch) => {
   dispatch(getcart());
-  axios.patch(`https://mymock-server-shubham00.herokuapp.com/Product_detail/${id}`,
-  {
-    cart:!cart
-  })
-    .then((res) => {
-      dispatch(successcart(res.data));
-      dispatch(getcartdata())
-    })
-    .catch((err) => {
-      dispatch(failurecart());  
-    });
-};
-
-export const getcartdata= () => (dispatch) => {
-
-  dispatch(getcart());
-  axios.get(`https://mymock-server-shubham00.herokuapp.com/Product_detail?cart=${true}`)
+  axios
+    .get(
+      `https://mymock-server-shubham00.herokuapp.com/Product_detail?cart=${true}`
+    )
     .then((res) => {
       dispatch(postcart(res.data));
     })
     .catch((err) => {
-      dispatch(failurecart());  
+      dispatch(failurecart());
+    });
+};
+
+export const cart = (payload) => (dispatch) => {
+  const { id, cart } = payload;
+  dispatch(getcart());
+  axios
+    .patch(
+      `https://mymock-server-shubham00.herokuapp.com/Product_detail/${id}`,
+      {
+        cart: !cart,
+      }
+    )
+    .then((res) => {
+      dispatch(successcart(res.data));
+      dispatch(getcartdata());
+    })
+    .catch((err) => {
+      dispatch(failurecart());
     });
 };

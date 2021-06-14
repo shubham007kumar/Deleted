@@ -5,11 +5,11 @@ import {
   Input,
   SubContainer,
   Wrapper1,
-  Wrapper2
+  Wrapper2,
 } from "./Style.js";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch,FaShuttleVan,FaStar,FaWallet,FaHeart,FaQuestion } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
-import { BiUser,BiRupee } from "react-icons/bi";
+import { BiUser, BiRupee } from "react-icons/bi";
 import { image } from "./data.js";
 import { Link } from "react-router-dom";
 import { animated, config, useSpring } from "react-spring";
@@ -18,17 +18,17 @@ import { auth } from "../../Firebase.js";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getcartdata } from "../../Redux/Cart/action.js";
-import styles from './Navbar.module.css'
+import styles from "./Navbar.module.css";
 export const Navbar = () => {
   const [click, setClick] = useState(false);
   const [category, setCategory] = useState(false);
   const [advice, setAdvice] = useState(false);
   const Login = useSelector((state) => state.Login.Login);
-  const dataList=useSelector((state)=>state.Cart.dataList);
-  const dispatch=useDispatch()
-  const [cart,setCart]=useState(false)
+  const dataList = useSelector((state) => state.Cart.dataList);
+  const dispatch = useDispatch();
+  const [cart, setCart] = useState(false);
   const [user, setUser] = useState();
-  const [count,setCount]=useState(1)
+  const [count, setCount] = useState(1);
   const handleBrand = () => {
     setClick((pre) => !pre);
   };
@@ -55,18 +55,17 @@ export const Navbar = () => {
       setUser(user.email.slice(0, 6));
     });
   }
-const handlecart=()=>{
-setCart(pre => !pre)
-}
+  const handlecart = () => {
+    setCart((pre) => !pre);
+  };
 
-let sum=0;
-for(var i=0;i<dataList.length;i++)
-{
-  sum=sum+dataList[i].Price
-}
-useEffect(()=>{
-  dispatch(getcartdata())
-},[dispatch])
+  let sum = 0;
+  for (var i = 0; i < dataList.length; i++) {
+    sum = sum + dataList[i].Price;
+  }
+  useEffect(() => {
+    dispatch(getcartdata());
+  }, [dispatch]);
   return (
     <>
       <Container>
@@ -103,10 +102,10 @@ useEffect(()=>{
             </p>
           </Link>
           <span className="cartLogo">
-      <FiShoppingCart onClick={handlecart}/>
-      <div className={styles.cartcount}>
-        <span className={styles.count}>{dataList.length}</span>
-      </div>
+            <FiShoppingCart onClick={handlecart} />
+            <div className={styles.cartcount}>
+              <span className={styles.count}>{dataList.length}</span>
+            </div>
           </span>
         </Wrapper2>
       </Container>
@@ -199,39 +198,75 @@ useEffect(()=>{
           </div>
         </div>
       </Hidden>
-      <div className={cart ? styles.notcontainer : styles.container }>
-      <h3 className={styles.shop}>Shopping Cart({dataList.length})</h3>
-           {
-               dataList.map((item)=>{
-                   return(
-                       <div key={item.id} className={styles.Threediv}>
-                         <div className={styles.Onediv}>
-                           <img src={item.Image}  alt="blank" className={styles.img} />
-                           <p className={styles.product}>{item.ProduceName}</p>
-                         </div>
-                         <hr className={styles.hori}></hr>
-                         <div className={styles.Twodiv}>
-                            <div className={styles.btncontainer}>
-                                <button className={styles.btn} onClick={()=>setCount(pre=> pre-1)}>-</button>
-                                <span className={styles.spa}>{count}</span>
-                                <button className={styles.btn1} onClick={()=>setCount(pre=> pre+1)}>+</button>
-                            </div>
-                            <p className={styles.price}><BiRupee/>{item.Price}</p>
-                         </div>
-                       </div>
-                   )
-               })
-           }
-           <div className={styles.Fourdiv}>
-             <div className={styles.Fivediv}>
-               <p>Total</p>
-               <span className={styles.ruppe}><BiRupee/>{sum}</span>
-             </div>
-             <div className={styles.Sixdiv}>
-               <p>PROCEED</p>
-             </div>
-           </div>
+      <div className={cart ? styles.notcontainer : styles.container}>
+        <h3 className={styles.shop}>Shopping Cart({dataList.length})</h3>
+        {dataList.map((item) => {
+          return (
+            <div key={item.id} className={styles.Threediv}>
+              <div className={styles.Onediv}>
+                <img src={item.Image} alt="blank" className={styles.img} />
+                <p className={styles.product}>{item.ProduceName}</p>
+              </div>
+              <hr className={styles.hori}></hr>
+              <div className={styles.Twodiv}>
+                <div className={styles.btncontainer}>
+                  <button
+                    className={styles.btn}
+                    onClick={() => setCount((pre) => pre - 1)}
+                  >
+                    -
+                  </button>
+                  <span className={styles.spa}>{count}</span>
+                  <button
+                    className={styles.btn1}
+                    onClick={() => setCount((pre) => pre + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+                <p className={styles.price}>
+                  <BiRupee />
+                  {item.Price}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+        <div className={styles.Fourdiv}>
+          <div className={styles.Fivediv}>
+            <p>Total</p>
+            <span className={styles.ruppe}>
+              <BiRupee />
+              {sum}
+            </span>
+          </div>
+          <div className={styles.Sixdiv}>
+            <p>PROCEED</p>
+          </div>
         </div>
-    </> 
+      </div>
+      <div className={styles.sevendiv}>
+        <div className={styles.eightdiv}>
+          <span><FaShuttleVan/></span>
+          <p>My Order</p>
+        </div>
+        <div className={styles.eightdiv}>
+          <span><FaStar/></span>
+          <p>My Profile</p>
+        </div>
+        <div className={styles.eightdiv}>
+          <span><FaWallet/></span>
+          <p>My Wallet</p>
+        </div>
+      <Link className={styles.linkp} to='/wishlist'><div className={styles.eightdiv}>
+          <span><FaHeart/></span>
+          <p>My Whislist</p>
+        </div></Link>
+        <div className={styles.eightdiv}>
+          <span><FaQuestion/></span>
+          <p>Q & A</p>
+        </div>
+      </div>
+    </>
   );
 };
