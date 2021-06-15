@@ -49,7 +49,8 @@ export const Brand = () => {
   const productList = useSelector((state) => state.Product.productList);
   const isLoading = useSelector((state) => state.Product.isLoading);
   const Login = useSelector((state) => state.Login.Login);
-   //sort by discount
+
+   //sort by discount,price,rating
    const [sortbycost,setSorbycost]=useState(null)
    const sortcondition=(a,b)=>{
     if(sortbycost === null){
@@ -69,6 +70,7 @@ export const Brand = () => {
            return b.Rating-a.Rating
     }
   }
+ 
   // for pagination
   const [page, setPage] = useState(1);
   const limit = 6;
@@ -80,6 +82,7 @@ export const Brand = () => {
   const handleChange = (page) => {
     setPage(page);
   };
+
 
   const handleClick = (e) => {
     const value=e.target.value
@@ -191,7 +194,7 @@ export const Brand = () => {
                 <VscLoading />
               </div>
             ) : (
-              currentproduct &&
+              productList &&
               currentproduct.sort(sortcondition).map((item) => {
                 return (
                   <div key={item.id} className={styles.container}>

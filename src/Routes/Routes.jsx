@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 import { Navbar } from "../Component/Navigation/Navbar";
 import { Signup } from "../Component/Authentication/Signup";
 import { Login } from "../Component/Authentication/Login";
+import { Error } from "../Component/404/Error";
 import { Home } from "./Home";
 import { Brand } from "../Component/Brand/Brand";
 import { Wishlistpage } from "../Component/WishlistPage/Wishlistpage";
@@ -30,7 +31,7 @@ export const Routes = () => {
           <Wishlistpage/>
         </Route>
         <Route>
-            <h1 style={{textAlign:"center"}}>Page not Found 404 {match.pathname.slice(1)}</h1>
+             <Error/>
         </Route>
       </Switch>
     </>
