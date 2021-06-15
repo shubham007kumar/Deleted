@@ -1,0 +1,24 @@
+.img{
+    width:60%;
+    margin-left: 5%;
+}
+.p1{
+    font-size: 40px;
+    font-weight: 900;
+}
+.container{
+    display: flex;
+    justify-content:center;
+    align-items:flex-start;
+    margin-top: 80px;
+}
+.subcontainer{
+ position: absolute;
+ left: 20%;
+ top: 15%;
+}
+.p2{
+    position: absolute;
+    top: 80px;
+    width: 250px;
+}
