@@ -26,7 +26,7 @@ export const cartreducer = (state = init, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        dataList: [...state.dataList, ...payload],
+        dataList:payload,
       };
     }
     case FAILURE_CART: {
