@@ -19,7 +19,6 @@ import { FiShoppingCart } from "react-icons/fi";
 import { BiUser, BiRupee } from "react-icons/bi";
 import { image } from "./data.js";
 import { Link, useHistory } from "react-router-dom";
-import { animated, config, useSpring } from "react-spring";
 import { useSelector } from "react-redux";
 import { auth } from "../../Firebase.js";
 import { useDispatch } from "react-redux";
@@ -27,6 +26,7 @@ import { useEffect } from "react";
 import { getcartdata } from "../../Redux/Cart/action.js";
 import styles from "./Navbar.module.css";
 import { getbyCategory } from "../../Redux/Product/action.js";
+import RubberBand from 'react-reveal/RubberBand';
 
 const init = {
   title: "",
@@ -62,17 +62,6 @@ export const Navbar = () => {
     setAdvice((pre) => !pre);
   };
 
-  const [flip, set] = useState(false);
-  const props = useSpring({
-    to: { opacity: 1 },
-    from: { opacity: 0 },
-    reset: true,
-    reverse: flip,
-    delay: 200,
-    config: config.molasses,
-    onRest: () => set(!flip),
-  });
-
   if (Login) {
     auth.onAuthStateChanged((user) => {
       setUser(user.email.slice(0, 6));
@@ -103,12 +92,12 @@ export const Navbar = () => {
     <>
       <Container>
         <Wrapper1>
-       <animated.img
-            style={{ width: "100px", ...props }}
+     <RubberBand> <img
+            style={{ width: "100px" }}
             src="https://adn-static1.nykaa.com/media/wysiwyg/HeaderIcons/NykaaLogoSvg.svg"
             alt="blank"
             onClick={handleLogo}
-          />
+          /></RubberBand> 
           <p onClick={handleCategory} className="brand">
             CATEGORIES
           </p>

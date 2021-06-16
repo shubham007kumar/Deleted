@@ -21,8 +21,10 @@ import { Pagination } from "../Pagination/Pagination.jsx";
 import { Footer } from "../Footer/Footer";
 import { useHistory } from "react-router-dom";
 import { sendWishlist } from "../../Redux/Wishlist/action.js";
-import { cart } from "../../Redux/Cart/action.js";
-
+import { cart, getcartdata } from "../../Redux/Cart/action.js";
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
 
 //styled component
 const Div = styled.div`
@@ -105,14 +107,29 @@ export const Brand = () => {
 
   //function for adding product to cart
   const handleCart = (data) => {
+    
     dispatch(cart(data));
+    dispatch(getcartdata())
+    store.addNotification({
+     title:"",
+     message:"New item added",
+     type:"success",
+     container:"top-right",
+     animationIn:["animated","fadeIn"],
+     animationOut:["animated","fadeout"],
+     dismiss:{
+       duration:2000
+     },
+     width:150
+    })
   };
   useEffect(() => {
-    dispatch(get());
+    dispatch(get());  
   }, [dispatch]); 
   return (
     <Div>
       <Slide />
+      <ReactNotification/>
       <p className={styles.downslide}>All Product</p>
       <div className={styles.maincontainer}>
         <div>
