@@ -209,7 +209,7 @@ export const Brand = () => {
                       MRP: <BiRupee />
                       {item.Price} | {item.Discount}% off
                     </p>
-                    <p className={styles.namecontainer}>
+                    <p className={styles.starcontainer}>
                       <FaStar />
                       <FaStar />
                       <FaStar />

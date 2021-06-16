@@ -80,12 +80,12 @@
   background-color: #fc2779;
   font-size: 14px;
   position: absolute;
-  top: 2px;
-  right: 11%;
+  top: 5px;
+  right: 11.2%;
 }
 .count {
   color: #fff;
-  margin-left: 6px;
+  margin-left: 5px;
 }
 .Fourdiv {
   display: flex;
@@ -134,13 +134,14 @@ width:13%;
 .eightdiv{
   font-size: 14px;
   font-weight: 900;
+  color: #484848;
   color: #263238;
   padding: 0px 20px;
   display: flex;
   justify-content: flex-start;
   column-gap: 10%;
   align-items: center;
-  border-bottom: 1px solid #263238;
+  border-bottom: 1px solid #eeeeee;
 }
 .linkp{
   text-decoration: none;

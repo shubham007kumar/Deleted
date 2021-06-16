@@ -21,32 +21,32 @@ export const Wrapper1 = styled.div`
 export const Wrapper2 = styled.div`
   display: flex;
   justify-content: center;
-  column-gap: 50px;
+  column-gap: 45px;
   align-items: center;
   .userLogo {
     font-size: 18px;
     color: #000;
-    margin-right: 5px;
+    margin-right: 2px;
+    margin-top: 15px;
     padding-top: 10px;
   }
 
   .cartLogo {
-    font-size: 22px;
+    font-size: 20px;
+    margin-top: 5px;
   }
   .accoutLink {
     text-decoration: none;
     text-transform: uppercase;
+    color:#000;
   }
-`;
-
-export const Img = styled.img`
-  width: 100px;
 `;
 
 export const SubContainer = styled.div`
   position: relative;
   .searchLogo {
     position: absolute;
+    color:#aeaeae;
     font-size: 20px;
     top: 8px;
     left: 8px;
@@ -114,10 +114,11 @@ export const Hidden = styled.div`
   }
 
   .categoryBlock {
-    font: 14px;
-    font-weight: 300;
+    font: 12px;
+    color:#aeaeae;
+    font-weight: 600;
     display: flex;
-    border-top: 1px solid #000;
+    border-top: 0.5px solid #aeaeae;
     color: #37474f;
     justify-content: center;
     column-gap: 20px;
