@@ -11,7 +11,7 @@ import { get, getbyCategory } from "../../Redux/Product/action.js";
 import styles from "./Brand.module.css";
 import styled from "styled-components";
 import { Slide } from "../ImageSlider/Slide";
-import { VscLoading } from "react-icons/vsc";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { BiRupee } from "react-icons/bi";
 import { BsFillHeartFill } from "react-icons/bs";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
@@ -191,7 +191,7 @@ export const Brand = () => {
           <div className={styles.subcontainer}>
             {isLoading ? (
               <div className={styles.loading}>
-                <VscLoading />
+                <CircularProgress />
               </div>
             ) : (
               productList &&

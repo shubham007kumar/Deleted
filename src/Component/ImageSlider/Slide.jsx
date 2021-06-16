@@ -26,7 +26,7 @@ export const Slide = () => {
         <div className={styles.circleOne}>
           <HiChevronLeft className={styles.leftLogo} />
         </div>
-        <img src={imgData[img]} alt="blank" className={styles.slide} />
+       <img src={imgData[img]} alt="blank" className={styles.slide} />
         <div className={styles.circleTwo}>
           <HiChevronRight className={styles.rightLogo} />
         </div>
