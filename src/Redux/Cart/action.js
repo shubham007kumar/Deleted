@@ -53,7 +53,7 @@ export const cart = (payload) => (dispatch) => {
     )
     .then((res) => {
       dispatch(successcart(res.data));
-      dispatch(getcartdata());
+      dispatch(getcartdata())
     })
     .catch((err) => {
       dispatch(failurecart());

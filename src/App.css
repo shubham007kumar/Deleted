@@ -1,12 +1,6 @@
 .App {
   font-family: 'Roboto', sans-serif;
 }
-.loader{
-  position: absolute;
-  top: 200px;
- margin-left: 43%;
-
-}
 .second{
   background-color: black;
   height: 753px;

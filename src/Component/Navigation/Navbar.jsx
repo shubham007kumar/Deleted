@@ -164,7 +164,7 @@ export const Navbar = () => {
             </div>
             <div className="imgDiv">
               {image.map((item, index) => (
-                <img src={item} alt="blank" key={index} />
+                <img key={index} src={item} alt="blank"  />
               ))}
             </div>
           </div>
