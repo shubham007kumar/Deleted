@@ -7,10 +7,8 @@ import { Error } from "../Component/404/Error";
 import { Home } from "./Home";
 import { Brand } from "../Component/Brand/Brand";
 import { Wishlistpage } from "../Component/WishlistPage/Wishlistpage";
-import { useLocation } from "react-router-dom";
 export const Routes = () => {
-  const match=useLocation()
-  console.log(match)
+
   return (
     <>
       <Navbar />

@@ -27,6 +27,7 @@ import { useEffect } from "react";
 import { getcartdata } from "../../Redux/Cart/action.js";
 import styles from "./Navbar.module.css";
 import { getbyCategory } from "../../Redux/Product/action.js";
+
 const init = {
   title: "",
 };
@@ -88,14 +89,25 @@ export const Navbar = () => {
   useEffect(() => {
     dispatch(getcartdata());
   }, [dispatch]);
+  //for logo state
+  
+  const [logo,setLogo]=useState(false)
+  const handleLogo=()=>{
+    setLogo(true)
+    if(logo)
+    {
+      history.push('/')
+    }
+  }
   return (
     <>
       <Container>
         <Wrapper1>
-          <animated.img
+       <animated.img
             style={{ width: "100px", ...props }}
             src="https://adn-static1.nykaa.com/media/wysiwyg/HeaderIcons/NykaaLogoSvg.svg"
             alt="blank"
+            onClick={handleLogo}
           />
           <p onClick={handleCategory} className="brand">
             CATEGORIES
@@ -103,9 +115,9 @@ export const Navbar = () => {
           <p onClick={handleBrand} className="brand">
             BRANDS
           </p>
-          <p>NYKAA FASHION</p>
-          <p onClick={handleAdvice}>BEAUTY ADVICE</p>
-          <p>NYKAA NETWORK</p>
+          <p className="brand">NYKAA FASHION</p>
+          <p onClick={handleAdvice} className="brand">BEAUTY ADVICE</p>
+          <p className="brand">NYKAA NETWORK</p>
           <SubContainer>
             <span className="searchLogo">
               <FaSearch />
