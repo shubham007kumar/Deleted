@@ -28,13 +28,21 @@ export const Signup = () => {
     const update = { ...query, [name]: value };
     setQuery(update);
   };
-
+ //Redirect to Signup page
+ const [state,setState]=useState(false)
+ const handleGotosign=()=>{
+       setState(pre => !pre)
+      
+ }
+ if(state){
+   return <Redirect to='/login' />
+ }
   return (
     <>
       {Signup ? (
         <Redirect to="/login" />
       ) : (
-        <div className={styles.container}>
+        <div className={styles.container1}>
           <h1 className={styles.H1}>Sign Up</h1>
           <p className={styles.error}>{message}</p>
           <hr className={styles.hori} />
@@ -83,6 +91,7 @@ export const Signup = () => {
           </form>
         </div>
       )}
+      <p onClick={handleGotosign} className={styles.redirect1}>Already have  an account?</p>
     </>
   );
 };

@@ -1,6 +1,6 @@
 .container {
   width: 25%;
-  margin: 10% 35%;
+  margin: 10% 36%;
   border: 1px solid #f1f1f1;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -51,4 +51,26 @@ input[type="email"]:focus {
   font-weight: 500;
   color: red;
   margin-left: 10px;
+}
+.redirect{
+  position: absolute;
+  font-size: 14px;
+  font-weight: 900;
+  left: 45%;
+  bottom: 20%;
+}
+
+.redirect1{
+  position: absolute;
+  font-size: 14px;
+  font-weight: 900;
+  left: 45%;
+  bottom: 12%;
+}
+.container1 {
+  width: 25%;
+  margin: 8% 38%;
+  border: 1px solid #f1f1f1;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
