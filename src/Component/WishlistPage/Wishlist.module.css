@@ -59,3 +59,12 @@
   margin-left: 10px;
   width: 220px;
 }
+.param1{
+  position: absolute;
+  top: 11%;
+  font-size: 14px;
+  padding: 10px 10px;
+  right: 38%;
+  display:inline-block;
+  margin: 10px 10px;
+}

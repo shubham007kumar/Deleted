@@ -27,6 +27,25 @@ export const failurecart = () => {
   };
 };
 
+export const cartdelete = (payload) => (dispatch) => {
+  const { id } = payload;
+  dispatch(getcart());
+  axios
+    .patch(
+      `https://mymock-server-shubham00.herokuapp.com/Product_detail/${id}`,
+      {
+        cart: false,
+      }
+    )
+    .then((res) => {
+      dispatch(successcart(res.data));
+    })
+    .catch((err) => {
+      dispatch(failurecart());
+    });
+};
+
+
 export const getcartdata = () => (dispatch) => {
   dispatch(getcart());
   axios
@@ -42,13 +61,13 @@ export const getcartdata = () => (dispatch) => {
 };
 
 export const cart = (payload) => (dispatch) => {
-  const { id, cart } = payload;
+  const { id } = payload;
   dispatch(getcart());
   axios
     .patch(
       `https://mymock-server-shubham00.herokuapp.com/Product_detail/${id}`,
       {
-        cart: !cart,
+        cart: true,
       }
     )
     .then((res) => {
@@ -58,3 +77,4 @@ export const cart = (payload) => (dispatch) => {
       dispatch(failurecart());
     });
 };
+

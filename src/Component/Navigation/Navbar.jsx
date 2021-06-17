@@ -18,15 +18,19 @@ import {
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser, BiRupee } from "react-icons/bi";
 import { image } from "./data.js";
+import { MdDelete } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { auth } from "../../Firebase.js";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getcartdata } from "../../Redux/Cart/action.js";
+import { cartdelete, getcartdata } from "../../Redux/Cart/action.js";
 import styles from "./Navbar.module.css";
 import { getbyCategory } from "../../Redux/Product/action.js";
 import RubberBand from 'react-reveal/RubberBand';
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
 
 const init = {
   title: "",
@@ -44,6 +48,7 @@ export const Navbar = () => {
   const [count, setCount] = useState(1);
   const [search, setSearch] = useState(init);
   const { title } = search;
+
   const handleSearch=(e)=>{
     if(e.key === 'Enter')
     {
@@ -75,11 +80,31 @@ export const Navbar = () => {
   for (var i = 0; i < dataList.length; i++) {
     sum = sum + dataList[i].Price;
   }
+  
   useEffect(() => {
     dispatch(getcartdata());
   }, [dispatch]);
-  //for logo state
+
   
+   //delete item from cart
+   const handleDelete=(data)=>{
+    dispatch(getcartdata()) 
+    dispatch(cartdelete(data))
+    store.addNotification({
+      title:"",
+      message:"Item deleted",
+      type:"danger",
+      container:"top-left",
+      animationIn:["animated","fadeIn"],
+      animationOut:["animated","fadeout"],
+      dismiss:{
+        duration:2000
+      },
+      width:150
+     })
+   }
+
+  //for logo state
   const [logo,setLogo]=useState(false)
   const handleLogo=()=>{
     setLogo(true)
@@ -92,6 +117,7 @@ export const Navbar = () => {
     <>
       <Container>
         <Wrapper1>
+          <ReactNotification/>
      <RubberBand> <img
             style={{ width: "100px" }}
             src="https://adn-static1.nykaa.com/media/wysiwyg/HeaderIcons/NykaaLogoSvg.svg"
@@ -236,6 +262,7 @@ export const Navbar = () => {
               <div className={styles.Onediv}>
                 <img src={item.Image} alt="blank" className={styles.img} />
                 <p className={styles.product}>{item.ProduceName}</p>
+                <span className={styles.del} onClick={()=>handleDelete(item)}><MdDelete/></span>
               </div>
               <hr className={styles.hori}></hr>
               <div className={styles.Twodiv}>

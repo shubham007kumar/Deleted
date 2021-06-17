@@ -51,7 +51,9 @@ export const Wishlistpage = () => {
             <p>Q & A</p>
           </div>
         </div>
+        <h2 className={styles.param1}>My Wishlist({dataList.length})</h2>
         <div className={styles.fourdiv}>
+          
           {dataList.map((item) => {
             return (
               <div key={item.id} className={styles.fivediv}>

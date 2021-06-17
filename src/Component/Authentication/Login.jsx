@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
+import { Redirect} from "react-router";
 import { login } from "../../Redux/Login/action";
 import styles from "./Signup.module.css";
 
@@ -25,6 +25,17 @@ export const Login = () => {
     const update = { ...query, [name]: value };
     setQuery(update);
   };
+
+  //Redirect to Signup page
+  const [state,setState]=useState(false)
+  const handleGotosign=()=>{
+        console.log(state)
+        setState(pre => !pre)
+       
+  }
+  if(state){
+    return <Redirect to='/Signup' />
+  }
   return (
     <>
       {Login ? (
@@ -63,6 +74,7 @@ export const Login = () => {
           </form>
         </div>
       )}
+      <p onClick={handleGotosign} className={styles.redirect}>Need an account?</p>
     </>
   );
 };
