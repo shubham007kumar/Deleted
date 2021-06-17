@@ -1,0 +1,77 @@
+.subcontainer1{
+    width: 50%;
+}
+.img{
+    margin-top: 50px;
+    margin-left: 50px;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 2s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #f1f1f1;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.label {
+  margin: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.inputField {
+  width: 80%;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-bottom: 1px solid #000;
+}
+.H1 {
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.hori {
+  border: 1px solid #f1f1f1;
+}
+.submitField {
+  font-size: 18px;
+  font-weight: 600;
+  width: 87%;
+  padding: 12px;
+  margin: 20px 20px;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  background: #2196f3;
+}
+
+.subcontainer2 {
+  position: absolute;
+  width: 24%;
+  right: 12%;
+  top: 15%;
+  border: 1px solid #f1f1f1;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

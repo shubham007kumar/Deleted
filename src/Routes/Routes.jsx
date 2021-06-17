@@ -7,6 +7,7 @@ import { Error } from "../Component/404/Error";
 import { Home } from "./Home";
 import { Brand } from "../Component/Brand/Brand";
 import { Wishlistpage } from "../Component/WishlistPage/Wishlistpage";
+import { Address } from "../Component/Payment/Address";
 export const Routes = () => {
 
   return (
@@ -27,6 +28,9 @@ export const Routes = () => {
         </Route>
         <Route path='/wishlist'>
           <Wishlistpage/>
+        </Route>
+        <Route path='/address'>
+          <Address/>
         </Route>
         <Route>
              <Error/>

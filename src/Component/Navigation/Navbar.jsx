@@ -297,8 +297,9 @@ export const Navbar = () => {
               {sum}
             </span>
           </div>
-          <div className={styles.Sixdiv}>
-            <p>PROCEED</p>
+         
+        <div className={styles.Sixdiv}>
+        <Link to='/address' style={{textDecoration:"none",color:"#fff"}}> <p >PROCEED</p></Link>
           </div>
         </div>
       </div>
