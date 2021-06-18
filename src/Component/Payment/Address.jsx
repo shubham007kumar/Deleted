@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Address.module.css";
 import Fade from 'react-reveal/Fade';
+import {Redirect} from 'react-router-dom'
 const init = {
   name: "",
   mobile: "",
@@ -20,6 +21,15 @@ export const Address = () => {
     const update = { ...query, [name]: value };
     setQuery(update);
   };
+  //for going to payment page
+  const [pay,setPay]=useState(false)
+  const handlePayment=()=>{
+    setPay(pre =>!pre)
+  }
+  if(pay)
+  {
+     return  <Redirect to='/payment' />
+  }
   return (
     <>
     <div className={styles.container1}>
@@ -80,6 +90,7 @@ export const Address = () => {
                     <input
                     type="submit"
                     value="Payment"
+                    onClick={handlePayment}
                     className={styles.submitField}
                     />
                 </form>
