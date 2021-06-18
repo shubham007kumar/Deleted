@@ -101,6 +101,10 @@
     border-radius: 10px;
     font-weight: 700;
     font-family: Verdana,    Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: #76d275;
 }
 .notification{
     position: absolute;
