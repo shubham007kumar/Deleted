@@ -57,7 +57,7 @@ input[type="email"]:focus {
   font-size: 14px;
   font-weight: 900;
   left: 45%;
-  bottom: 20%;
+  bottom: 15%;
 }
 
 .redirect1{
@@ -65,7 +65,7 @@ input[type="email"]:focus {
   font-size: 14px;
   font-weight: 900;
   left: 45%;
-  bottom: 12%;
+  bottom: 9%;
 }
 .container1 {
   width: 25%;
