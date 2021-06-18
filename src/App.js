@@ -47,7 +47,7 @@ function App() {
     setLoading(true)
     setTimeout(()=>{
       setLoading(false)
-    },500)
+    },3000)
 
     const timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
