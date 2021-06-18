@@ -3,8 +3,10 @@
   width: 0%;
   background-color: orange;
   overflow: hidden;
+  cursor: pointer;
 }
 .notcontainer {
+  cursor: pointer;
   position: absolute;
   z-index: 1;
   right: 0px;
