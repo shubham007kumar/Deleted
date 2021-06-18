@@ -65,8 +65,10 @@ transform: scale(0.8);
   column-gap: 30%;
   align-items: center;
   padding: 5px 10px;
+  cursor: pointer;
 }
 .container:hover > .hide > .addcart {
+  cursor: pointer;
   padding: 4% 5%;
   font-weight: 900;
   background-color: #fc2779;

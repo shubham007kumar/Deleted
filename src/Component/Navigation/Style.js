@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 900;
+  cursor: pointer;
 `;
 
 export const Wrapper1 = styled.div`
