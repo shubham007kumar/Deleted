@@ -223,8 +223,8 @@ export const Brand = () => {
                     <p className={styles.category}>{item.category}</p>
                     <p className={styles.namecontainer}>{item.ProduceName}</p>
                     <p className={styles.pricecontainer}>
-                      MRP: <BiRupee />
-                      {item.Price} | {item.Discount}% off
+                      MRP: <BiRupee className={styles.rupe} />
+                    <span className={styles.rupe}>{item.Price}</span> | <span className={styles.dis}> {item.Discount}% off </span>
                     </p>
                     <p className={styles.starcontainer}>
                       <FaStar />

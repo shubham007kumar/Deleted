@@ -47,7 +47,7 @@ function App() {
     setLoading(true)
     setTimeout(()=>{
       setLoading(false)
-    },6000)
+    },500)
 
     const timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
@@ -66,7 +66,7 @@ function App() {
               <LinearProgressWithLabel value={progress} />
               </div>
               :
-              <Routes /> 
+              <Routes/>
             }
       </div>
   );

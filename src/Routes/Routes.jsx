@@ -8,6 +8,7 @@ import { Home } from "./Home";
 import { Brand } from "../Component/Brand/Brand";
 import { Wishlistpage } from "../Component/WishlistPage/Wishlistpage";
 import { Address } from "../Component/Payment/Address";
+import { Pay } from "../Component/Payment/Pay";
 export const Routes = () => {
 
   return (
@@ -31,6 +32,9 @@ export const Routes = () => {
         </Route>
         <Route path='/address'>
           <Address/>
+        </Route>
+        <Route path='/payment'>
+          <Pay/>
         </Route>
         <Route>
              <Error/>
